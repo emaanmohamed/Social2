@@ -8,7 +8,7 @@
         <thead>
         <tr>
             <th>Id</th>
-            {{--<th>Photo</th>--}}
+            <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
@@ -24,8 +24,8 @@
         @foreach($users as $user)
             <tr>
                 <td>{{$user->id}}</td>
-                {{--<td><img height="50" src="{{url(isset($user->photo->file) ? $user->photo->file : 'images/default.jpg')}}" alt=""></td>--}}
-                <td><a href="">{{$user->name}}</a></td>
+                <td><img height="50" width="50" src="{{$user->photo ? $user->photo->file : 'no user photo'}}" alt=""></td>
+                <td><a href="{{url('admin/users/' . $user->id . '/edit')}}">{{$user->name}}</a></td>
                 <td>{{$user->email}}</td>
                 <td>{{isset($user->role) && ! is_null($user->role) ? $user->role->name : 'not defined yet'}}</td>
                 <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>

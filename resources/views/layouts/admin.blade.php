@@ -128,11 +128,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="">All Users</a>
+                                <a href="{{url('admin/users')}}">All Users</a>
                             </li>
 
                             <li>
-                                <a href="">Create User</a>
+                                <a href="{{url('admin/users/create')}}">Create User</a>
                             </li>
 
                         </ul>
@@ -143,11 +143,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/posts">All Posts</a>
+                                <a href="{{url('admin.posts.index')}}">All Posts</a>
                             </li>
 
                             <li>
-                                <a href="/posts/create">Create Post</a>
+                                <a href="{{url('admin.posts.create')}}">Create Post</a>
                             </li>
 
                         </ul>
@@ -348,7 +348,6 @@
 </div>
 <!-- /#page-wrapper -->
 
-</div>
 <!-- /#wrapper -->
 
 <!-- jQuery -->
