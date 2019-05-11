@@ -24,7 +24,7 @@
         @foreach($users as $user)
             <tr>
                 <td>{{$user->id}}</td>
-                <td><img height="50" width="50" src="{{$user->photo ? $user->photo->file : 'no user photo'}}" alt=""></td>
+                <td><img height="50" width="50px" src="{{url(isset($user->photo->file) ? $user->photo->file : 'images/default.jpg')}}" alt=""></td>
                 <td><a href="{{url('admin/users/' . $user->id . '/edit')}}">{{$user->name}}</a></td>
                 <td>{{$user->email}}</td>
                 <td>{{isset($user->role) && ! is_null($user->role) ? $user->role->name : 'not defined yet'}}</td>

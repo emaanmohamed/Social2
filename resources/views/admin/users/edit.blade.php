@@ -7,10 +7,7 @@
     <h1>Edit User</h1>
     <div class="row">
         <div class="col-sm-3">
-            {{--<img src="{{url($user->photo->file)}}" alt="" class="img-responsive img-rounded">--}}
-{{dd($user->photo)}}
-            <img src="{{$user->photo ? $user->photo->file : 'http://placeholder.it/400X400'}}" alt="" class="img-responsive img-rounded">
-
+            <img src="{{url(isset($user->photo->file) ? $user->photo->file : 'https://via.placeholder.com/400')}}" alt="" class="img-responsive img-rounded">
         </div>
 
         <div class="col-sm-9">
@@ -49,14 +46,14 @@
             </div>
 
             <div class="form-group">
-                {!! Form::submit('Create User', ['class'=>'btn btn-primary col-sm-6']) !!}
+                {!! Form::submit('Create User', ['class'=>'btn btn-primary col-sm-3']) !!}
             </div>
             {!! Form::close() !!}
 
             {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminUsersController@destroy', $user->id]]) !!}
 
             <div class="form-group">
-                {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-6']) !!}
+                {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-3 '])!!}
             </div>
             {!! Form::close() !!}
         </div>
