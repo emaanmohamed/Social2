@@ -14,12 +14,20 @@ Route::get('/admin', function (){
     return view('admin.index');
 });
 
-Route::group(['middleware'=> 'admin'], function (){
+//Route::group(['middleware'=> 'admin'], function (){
 
     Route::resource('admin/users', 'AdminUsersController');
-    Route::resource('admin/posts', 'AdminPostsController');
+    Route::get('admin/posts', 'AdminPostsController@index');
+    Route::get('admin/posts/create', 'AdminPostsController@create');
+    Route::post('admin/posts', 'AdminPostsController@store');
+    Route::put('admin/posts/{id}', 'AdminPostsController@update');
+    Route::get('admin/posts/edit/{id}', 'AdminPostsController@edit')->name('admin.posts.edit');
+//    Route::resource('admin/posts', 'AdminPostsController');
+//    Route::resource('admin/posts', 'AdminPostsController');
 
-});
+
+
+//});
 
 
 
