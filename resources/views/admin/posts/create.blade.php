@@ -4,7 +4,7 @@
 
     <h1>Create Post</h1>
 
-    {!! Form::open(['method'=>'POST', 'action'=> 'AdminPostsController@store', 'file'=>true]) !!}
+    {!! Form::open(['method'=>'POST', 'action'=> 'AdminPostsController@store', "enctype" => "multipart/form-data"]) !!}
     <div class="form-group">
         {!! Form::label('title', 'Title:') !!}
         {!! Form::text('title', null, ['class'=>'form-control']) !!}

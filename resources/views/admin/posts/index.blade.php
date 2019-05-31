@@ -27,9 +27,9 @@
                     <td>{{$post->id}}</td>
                     <td><a href="{{route('admin.posts.edit', $post->id)}}">{{isset($post->user->name) ? $post->user->name : 'no user'}}</a></td>
                     <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
-                    <td><img src="{{$post->photo ? $post->photo->file : 'https://via.placeholder.com/100'}}"></td>
+                    <td><img height="50" width="50px" src="{{$post->photo ? url($post->photo->file) : 'https://via.placeholder.com/100'}}"></td>
                     <td>{{$post->title}}</td>
-                    <td>{{$post->body}}</td>
+                    <td>{{Str::limit($post->body, 7)}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                 </tr>

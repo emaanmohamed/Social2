@@ -35,12 +35,8 @@ class AdminPostsController extends Controller
     {
         $input = $request->all();
         $user = Auth::user();
-      //  dd($request->file('title'));
         if($file = $request->file('photo_id')){
-        //    dd($file);
-         // dd($request->file('photo_id'));
             $name = time() . $file->getClientOriginalName();
-        //    dd($name);
             $file->move('images', $name);
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
@@ -49,8 +45,26 @@ class AdminPostsController extends Controller
         return redirect('/admin/posts');
 
     }
-    public function update($id)
+    public function update(Request $request, $id)
     {
-
+        $input = $request->all();
+        if($file = $request->file('photo_id'))
+        {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name );
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+        $arr = array_except($input, ['_method', '_token']);
+        $arr['category_id'] = (int) $arr['category_id'];
+        Auth::user()->posts()->whereId($id)->first()->update($arr);
+        return redirect('/admin/posts');
+    }
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        unlink(public_path() . $post->photo->file);
+        $post->delete();
+        return redirect('/admin/posts');
     }
 }
