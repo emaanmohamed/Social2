@@ -25,6 +25,11 @@ Route::group(['middleware'=> 'admin'], function (){
     Route::patch('admin/posts/{id}', 'AdminPostsController@update');
     Route::delete('admin/posts/{id}', 'AdminPostsController@destroy');
     Route::get('admin/posts/edit/{id}', 'AdminPostsController@edit')->name('admin.posts.edit');
+    Route::get('admin/categories', 'AdminCategoriesController@index');
+    Route::post('admin/categories', 'AdminCategoriesController@store');
+    Route::patch('admin/categories/{id}', 'AdminCategoriesController@update');
+    Route::get('admin/categories/{id}/edit', 'AdminCategoriesController@edit')->name('admin.categories.edit');
+    Route::delete('admin/categories/{id}', 'AdminCategoriesController@destroy');
 
 });
 
