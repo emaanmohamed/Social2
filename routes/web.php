@@ -30,7 +30,10 @@ Route::group(['middleware'=> 'admin'], function (){
     Route::patch('admin/categories/{id}', 'AdminCategoriesController@update');
     Route::get('admin/categories/{id}/edit', 'AdminCategoriesController@edit')->name('admin.categories.edit');
     Route::delete('admin/categories/{id}', 'AdminCategoriesController@destroy');
-
+    Route::get('admin/media', 'AdminMediaController@index');
+    Route::get('admin/media/create', 'AdminMediaController@create');
+    Route::post('admin/media', 'AdminMediaController@store');
+    Route::delete('admin/media/{id}', 'AdminMediaController@destroy');
 });
 
 
