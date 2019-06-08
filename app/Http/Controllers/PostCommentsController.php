@@ -27,4 +27,12 @@ class PostCommentsController extends Controller
         $request->session()->flash('comment_message', 'your message has been submitted and is waiting moderation');
         return redirect()->back();
     }
+    public function update()
+    {
+
+    }
+    public function destroy()
+    {
+
+    }
 }

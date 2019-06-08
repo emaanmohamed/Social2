@@ -35,7 +35,8 @@ Route::group(['middleware'=> 'admin'], function (){
     Route::get('admin/comments', 'PostCommentsController@index');
     Route::get('admin/comment/replies', 'CommentRepliesController@index');
     Route::post('admin/comments', 'PostCommentsController@store');
-
+    Route::patch('admin/comments/{id}', 'PostCommentsController@update');
+    Route::delete('admin/comments/{id}', 'PostCommentsController@destroy');
 });
 
 
