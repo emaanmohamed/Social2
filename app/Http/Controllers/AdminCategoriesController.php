@@ -12,6 +12,10 @@ class AdminCategoriesController extends Controller
         $categories = Category::all();
         return view('admin.categories.index', compact('categories'));
     }
+    public function create()
+    {
+
+    }
     public function store(Request $request)
     {
         Category::create($request->all());
