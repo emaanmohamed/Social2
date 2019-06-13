@@ -14,6 +14,9 @@ Route::get('/post/{id}' , ['as' => 'home.post', 'uses' => 'AdminPostsController@
 Route::post('doLogin', 'HomeController@login')->name('doLogin');
 
 Route::group(['middleware'=> 'admin'], function (){
+    Route::get('/admin', function (){
+       return view('admin.index');
+    });
 
     Route::resource('admin/users', 'AdminUsersController');
     Route::get('admin/posts', 'AdminPostsController@index');
@@ -32,12 +35,24 @@ Route::group(['middleware'=> 'admin'], function (){
     Route::get('admin/media/create', 'AdminMediaController@create');
     Route::post('admin/media', 'AdminMediaController@store');
     Route::delete('admin/media/{id}', 'AdminMediaController@destroy');
-    Route::get('admin/comments', 'PostCommentsController@index');
+    Route::get('admin/comments', 'PostCommentsController@index')->name('admin.comments.index');
     Route::get('admin/comment/replies', 'CommentRepliesController@index');
     Route::post('admin/comments', 'PostCommentsController@store');
     Route::patch('admin/comments/{id}', 'PostCommentsController@update');
     Route::delete('admin/comments/{id}', 'PostCommentsController@destroy');
+    Route::get('admin/comments/{id}', 'PostCommentsController@show')->name('admin.comments.show');
+    Route::get('admin/comments/replies', 'CommentRepliesController@index');
+    Route::post('admin/comments/replies', 'CommentRepliesController@store');
+    Route::patch('admin/comments/replies/{id}', 'CommentRepliesController@update');
+    Route::get('admin/comments/replies/{id}', 'CommentRepliesController@destroy');
+    Route::get('admin/comments/replies', 'CommentRepliesController@edit');
+    Route::get('admin/comments/replies', 'CommentRepliesController@create');
 });
+
+Route::group(['middleware'=> 'auth'], function (){
+    Route::post('comment/reply', 'CommentRepliesController@createReply');
+});
+
 
 
 
