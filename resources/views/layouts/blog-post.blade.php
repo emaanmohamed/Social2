@@ -151,6 +151,8 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
 
+@yield('scripts')
+
 </body>
 
 </html>
