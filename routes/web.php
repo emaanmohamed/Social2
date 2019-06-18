@@ -9,7 +9,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/post/{id}' , ['as' => 'home.post', 'uses' => 'AdminPostsController@post']);
+Route::get('/post/{id}' ,  ['as' => 'home.post', 'uses' => 'AdminPostsController@post']);
 
 Route::post('doLogin', 'HomeController@login')->name('doLogin');
 

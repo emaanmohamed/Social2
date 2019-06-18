@@ -39,7 +39,7 @@
     <div class="media">
         <a class="pull-left" href="#">
             {{--{{dump($comment->photo)}}--}}
-            <img class="media-object" height="64" width="64px" src="{{$comment->photo ? $comment->photo : "https://via.placeholder.com/100"}}" alt="">
+            <img class="media-object" height="64" width="64px" src="{{Auth::user()->gravatar ? Auth::user()->gravatar : "https://via.placeholder.com/100"}}" alt="">
         </a>
         <div class="media-body">
             <h4 class="media-heading">{{$comment->author}}

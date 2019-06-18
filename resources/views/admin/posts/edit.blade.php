@@ -3,6 +3,12 @@
 @section('content')
 
     <h1>Edit Post</h1>
+    <div class="row">
+    <div class="col-sm-3">
+        <img src="{{$post->photo ? url($post->photo->file) : 'https://via.placeholder.com/100'}}" alt="" class="img-responsive img-rounded">
+    </div>
+
+        <div class="col-sm-9">
 
     {!! Form::model($post, ['method'=>'PATCH', 'action'=> ['AdminPostsController@update', $post->id], "enctype" => "multipart/form-data"]) !!}
     <div class="form-group">
@@ -33,7 +39,9 @@
         {!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-3 '])!!}
     </div>
     {!! Form::close() !!}
-
+    </div>
+    </div>
+    <div class="row">
     @include('includes.form_error')
-
+    </div>
 @stop
