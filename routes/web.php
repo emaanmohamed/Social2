@@ -44,8 +44,8 @@ Route::group(['middleware'=> 'admin'], function (){
     Route::get('admin/comments/replies', 'CommentRepliesController@index');
     Route::post('admin/comments/replies', 'CommentRepliesController@store');
     Route::patch('admin/comments/replies/{id}', 'CommentRepliesController@update');
-    Route::get('admin/comments/replies/{id}', 'CommentRepliesController@destroy');
-    Route::get('admin/comments/replies', 'CommentRepliesController@edit');
+    Route::delete('admin/comments/replies/{id}', 'CommentRepliesController@destroy');
+    Route::get('admin/comments/replies/{id}', 'CommentRepliesController@show')->name('admin.comments.replies.show');
     Route::get('admin/comments/replies', 'CommentRepliesController@create');
 });
 

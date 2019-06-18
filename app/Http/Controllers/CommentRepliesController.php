@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+//use Egulias\EmailValidator\Warning\Comment;
 use App\CommentReply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +17,12 @@ class CommentRepliesController extends Controller
     public function create()
     {
 
+    }
+    public function show($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $replies = $comment->replies;
+        return view('admin.comments.replies.show', compact('replies'));
     }
     public function store(Request $request)
     {
@@ -35,5 +43,16 @@ class CommentRepliesController extends Controller
         return redirect()->back();
 
     }
+    public function update(Request $request, $id)
+    {
+        CommentReply::findOrFail($id)->update($request->all());
+        return redirect()->back();
+    }
+    public function destroy($id)
+    {
+        CommentReply::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+
 
 }
