@@ -13,7 +13,7 @@ class AdminPostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(3);
        return view('admin.posts.index', compact('posts'));
     }
     public function create()
@@ -63,7 +63,7 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
-        if(isset($post->photo->file)) {
+        if(isset($post->photo->file) &&  file_exists(public_path() . $post->photo->file)) {
             unlink(public_path() . $post->photo->file);
         }
         $post->delete();
